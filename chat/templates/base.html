@@ -1,10 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>{% block title %} {% endblock %}</title>
-    {% load static %}
     <link href="{%  static  'chat/Bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <style>
         html{
@@ -37,10 +38,10 @@
     <link href="{% static 'chat/css/vanilla-zoom.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
-    <script src="{%  static  'chat/Bootstrap/js/bootstrap.min.js'%}" type="text/js"></script>
+    <script src="{%  static  'chat/Bootstrap/js/bootstrap.min.js' %}" type="text/js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-    <script src="{%  static  'chat/js/vanilla-zoom.js'%}" type="text/js"></script>
-    <script src="{%  static  'chat/js/theme.js'%}" type="text/js"></script>
+    <script src="{%  static  'chat/js/vanilla-zoom.js' %}" type="text/js"></script>
+    <script src="{%  static  'chat/js/theme.js' %}" type="text/js"></script>
 
 </head>
 <body>
@@ -56,8 +57,28 @@
     {% endblock %}
 </div>
 <footer class="footer">
+    <script>
+      $("input")
+        .each(
+          function() {
+            $(this)
+              .data('holder', $(this)
+                .attr('placeholder'));
+            $(this)
+              .focusin(function() {
+                $(this)
+                  .attr('placeholder', '');
+              });
+            $(this)
+              .focusout(function() {
+                $(this)
+                  .attr('placeholder', $(this)
+                    .data('holder'));
+              });
+          });
+    </script>
     <div class="container">
-        <small><center>&copy; Copyright 2021, LeTalk Corporation</center></small>
+        <small><bottom>&copy; Copyright 2021, LeTalk Corporation</bottom></small>
     </div>
 </footer>
 </body>
