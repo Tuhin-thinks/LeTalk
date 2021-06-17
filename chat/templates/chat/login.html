@@ -109,12 +109,13 @@ Login
 
 <div class="main">
     <p class="login" align="center">Login</p>
-    <form>
-        <input type="text" required align="center" placeholder="Username" class="un"><br>
-        <input type="password" required align="center" placeholder="Password" class="pass"><br>
-         <a class="submit">Login</a><br><br>
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <input name="username" type="text" required align="center" placeholder="Username" class="un"><br>
+        <input name="password" type="password" required align="center" placeholder="Password" class="pass"><br>
+         <button class="submit">Login</button>
+         <br><br>
       <p class="forgot" align="center"><a href="#">Forgot Password?</a></p>
-
       <br>
     </form>
 </div>

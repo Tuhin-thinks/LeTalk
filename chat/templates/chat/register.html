@@ -101,12 +101,33 @@ Register
 {% block content %}
 <div class="main">
     <p class="register" align="center">Register</p><br>
-    <form method="POST">{% csrf_token %}
-        <input type="text" required class="uname" placeholder="UserName" align="center">
-        <input type="email" required class="mail" placeholder="Email Id" align="center"><br>
-        <input type="password" required class="pass" placeholder="Set Password" align="center"><br>
-        <input type="text" required class="spass" placeholder="Confirm Password" align="center"><br>
-        <button type="submit" class="submit">Submit</button>
+    <form class="regForm" method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        <div>
+            <!-- {{username_error }} -->
+            {{ regForm.username }}
+        </div>
+
+        {{ regForm.email }}
+        {{ regForm.password1 }}
+        {{ regForm.password2 }}
+        
+        {% if regForm.errors %}
+            {% for field in regForm %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ field.label }}</strong><span>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+                {% for error in regForm.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+        {% endif %}
+
+        <button class="submit" type="submit" id="regBtn">Submit</button>
     </form>
 </div>
 {% endblock %}
