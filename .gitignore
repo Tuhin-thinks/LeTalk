@@ -1,7 +1,7 @@
 **/.vscode
 **/__pycache__
 *.pyc
-**/.idea/
+**/.idea
 
 # master repo
 master_repo/
